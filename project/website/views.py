@@ -45,6 +45,17 @@ class SignUp(View):
 
         return render(request, 'website/signup.html')
 
+    def post(self, request, *args, **kwargs):
+        username = request.POST['uesrname']
+        password = request.POST['password']
+        email = request.POST['email']
+        user = User.objects.create_user(username=username,
+                                        email=email,
+                                        password=password)
+        usr = authenticate(username=username, password=password)
+        login(self.request, usr)
+        return redirect('index')
+
 
 class Index(View):
     def get(self, request, *args, **kwargs):
