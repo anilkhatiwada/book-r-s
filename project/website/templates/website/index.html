@@ -1,0 +1,25 @@
+{% extends "website/base.html" %}
+
+{% block container %}
+<div class="container">
+
+    <div class="row">
+        {% for x in data %}
+        <div class="col-md-4" style="padding: 20px">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ x.image }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ x.book_name }}</h5>
+                    <h5>{{ x.author }}</h5>
+                    <h5>Votes - {{ x.votes }}</h5>
+                    <h5>Rating - {{ x.rating }}</h5>
+                    <a href="/single/{{x.id}}" class="btn btn-primary">More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

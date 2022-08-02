@@ -1,0 +1,30 @@
+{% extends "website/base.html" %}
+
+{% block container %}
+
+
+<form style="width: 30%; margin-left: 30%;" method="post" action="{% url 'login' %}">
+    <!-- Email input -->
+    {% csrf_token %}
+    <div class="form-outline mb-4">
+        <input type="text" id="form2Example1" name="uesrname" class="form-control" />
+        <label class="form-label" for="form2Example1">Username</label>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+        <input type="password" id="form2Example2" name="password" class="form-control" />
+        <label class="form-label" for="form2Example2">Password</label>
+    </div>
+
+
+    <!-- Submit button -->
+    <button type="input" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+    <!-- Register buttons -->
+    <div class="text-center">
+        <p>Not a member? <a href="{% url 'sign_up' %}">Register</a></p>
+    </div>
+</form>
+
+{% endblock %}

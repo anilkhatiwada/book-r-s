@@ -1,0 +1,43 @@
+{% extends "website/base.html" %}
+
+{% block container %}
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-white" style="font-size:50px">Recommend Books</h1>
+                <form action="{% url 'recommend' %}" method="post">
+                    {% csrf_token %}
+                    <input name="user_input" type="text" class="form-control"><br>
+                    <input type="submit" class="btn btn-lg btn-warning">
+                </form>
+            </div>
+
+          {% if books %}
+
+          <div class="row">
+            {% for x in books %}
+            <div class="col-md-4" style="padding: 20px">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ x.image }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ x.book_name }}</h5>
+                        <h5>{{ x.author }}</h5>
+                        <h5>Votes - {{ x.votes }}</h5>
+                        <h5>Rating - {{ x.rating }}</h5>
+                        <a href="/single/{{x.id}}" class="btn btn-primary">More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+            {% endif %} 
+
+
+
+
+        </div>
+    </div>
+
+    {% endblock %}
